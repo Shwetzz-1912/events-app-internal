@@ -41,7 +41,7 @@ const mockEvents = {
 app.get('/', (req, res) => {
     res.json([]);
 });
-
+git
 // version endpoint to provide easy convient method to demonstrating tests pass/fail
 app.get('/version', (req, res) => {
     getEvents(req, res);
