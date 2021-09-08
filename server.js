@@ -1,6 +1,15 @@
-'use strict';
+ 'use strict';
+
+// express is a nodejs web server
+// https://www.npmjs.com/package/express
+const express = require('express');
+
 // bring in firestore
 const Firestore = require("@google-cloud/firestore");
+
+// converts content in the request into parameter req.body
+// https://www.npmjs.com/package/body-parser
+const bodyParser = require('body-parser');
 
 // initialize Firestore and set project id from env var
 const firestore = new Firestore(
@@ -9,15 +18,6 @@ const firestore = new Firestore(
     }
 );
 
-
-
-// express is a nodejs web server
-// https://www.npmjs.com/package/express
-const express = require('express');
-
-// converts content in the request into parameter req.body
-// https://www.npmjs.com/package/body-parser
-const bodyParser = require('body-parser');
 
 // create the server
 const app = express();
@@ -87,14 +87,7 @@ function getEvents(req, res) {
             console.error('Error getting events', err);
             res.json(mockEvents);
         });
-};
-
-
-
-    // add to the mock array
-    mockEvents.events.push(ev);
-    // return the complete array
-    res.json(mockEvents);
+    };
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
